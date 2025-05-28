@@ -1,0 +1,26 @@
+name: CI with Docker Compose
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Compose
+        run: docker compose up -d
+
+      - name: Wait for server to be ready
+        run: |
+          echo "Waiting for server to start..."
+          sleep 20
+          docker compose ps
+
+      - name: Run tests
+        run: docker compose exec -T server pytest tests/
