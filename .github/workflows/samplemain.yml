@@ -29,9 +29,12 @@ jobs:
 
       - name: Set up Docker Compose
         run: docker compose up -d
-
-      - name: Wait for containers to be healthy
-        run: sleep 20
+        
+      - name: Wait for services to be ready
+        run: |
+            echo "Waiting for web service to be ready..."
+            sleep 20  # adjust this as needed
+            docker compose ps
 
       - name: Run tests
         run: docker compose exec -T web pytest tests/
