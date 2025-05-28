@@ -27,7 +27,7 @@ def on_startup():
 
 @app.get("/")
 def hello():
-    return "Hello, Docker! Welcome to the world of python"
+    return "Hello, Docker! Welcome to the world of python, now testing workflow"
 
 
 @app.post("/heroes/")
