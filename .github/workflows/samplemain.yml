@@ -34,7 +34,7 @@ jobs:
         run: sleep 20
 
       - name: Run tests
-        run: docker-compose exec -T web pytest tests/
+        run: docker compose exec -T web pytest tests/
 
   build-and-push:
     needs: test
