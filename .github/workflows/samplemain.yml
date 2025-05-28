@@ -37,7 +37,7 @@ jobs:
             docker compose ps
 
       - name: Run tests
-        run: docker compose exec -T web pytest tests/
+        run: docker compose exec -T server pytest tests/
 
   build-and-push:
     needs: test
